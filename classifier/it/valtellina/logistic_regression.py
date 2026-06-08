@@ -22,7 +22,7 @@ class RegressioneLogistica:
     def train(self):
         X_train, X_test, y_train, y_test = self.splitta_dataset()
 
-        self.__model = LogisticRegression(max_iter=1000)
+        self.__model = LogisticRegression(max_iter=1000, penalty="l1", solver="liblinear", C=1.0) 
         self.__model.fit(X_train, y_train)
 
         y_pred = self.__model.predict(X_test)
