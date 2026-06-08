@@ -184,7 +184,7 @@ GET /svc/summary
 
 1. Caricamento dataset UCI
 2. Pulizia valori anomali (`?, NA, unknown, ecc.`)
-3. Eliminazione colonne con troppi missing values
+3. Eliminazione colonne con troppi missing values e colonne costanti
 4. Imputazione intelligente:
 
    * Moda → categoriche
