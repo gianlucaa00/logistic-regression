@@ -105,21 +105,21 @@ class RegressioneLogistica:
         if not self.__results:
             raise ValueError("Devi prima eseguire esegui_regressione()")
 
-        res = ("\n" + "=" * 60 + "\n"
-                                  "SUMMARY COMPLETO\n"
-                + "=" * 60 + "\n"
-                + f"Accuracy:      {self.__results['accuracy']:.4f}\n"
-                + f"Precision:     {self.__results['precision']:.4f}\n"
-                + f"Recall:        {self.__results['recall']:.4f}\n"
-                + f"F1 Score:      {self.__results['f1_score']:.4f}\n"
-                + f"Balanced Acc:  {self.__results['balanced_accuracy']:.4f}\n"
-                + f"AUC-ROC:       {self.__results['auc_roc']:.4f}\n"
-                + f"Intercept:     {self.__results['intercept']:.4f}\n"
-                + "\nMatrice di confusione:\n"
-                + str(self.__results['matrice_confusione'])
-                + "\nCoefficienti principali:\n"
-                + str(self.__results['coefficienti'].head(10))
-               )
+       res = {
+            "accuracy": round(self.__results["accuracy"], 4),
+            "precision": round(self.__results["precision"], 4),
+            "recall": round(self.__results["recall"], 4),
+            "f1_score": round(self.__results["f1_score"], 4),
+            "balanced_accuracy": round(self.__results["balanced_accuracy"], 4),
+            "auc_roc": round(self.__results["auc_roc"], 4),
+            "intercept": round(float(self.__results["intercept"]), 4),
+            "matrice_confusione": self.__results["matrice_confusione"].tolist(),
+            "coefficienti_principali": (
+                self.__results["coefficienti"]
+                .head(10)
+                .to_dict(orient="records")
+            )
+        }
         return res
 
 
